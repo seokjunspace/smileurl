@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- 부트스트랩 연결 -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <title>URL 단축하기</title>
+
+
+</head>
+<body>
+
+<hr>
+<div class="container text-center">
+    <div class="row">
+
+        <div class="col-md-10 col-lg-8 mx-auto">
+            <h2>URL 입력하기</h2>
+            <br></br>
+            <form action="/shorten" class="form-inline d-flex">
+                <input class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="text" name="input" type="text"
+                       required placeholder="url 입력"/>
+                <button class="btn btn-info mx-auto" type="submit">줄이기</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- 여기서부터 수정한 거-->
+<h1 class="text-center"> TOP5 URL</h1>
+
+    <hr>
+    <!-- table>(tr>th*5) -->
+    <hr>
+    <table cellpadding="10" cellspacing="0" align="center" class="table table-bordered table-striped table-hover" style="width:80%">
+        <tr class="table-danger">
+            <th>URL</th>
+            <th>개수</th>
+        </tr>
+        <!-- tr>td*5 -->
+        <!-- 딕셔너리.키로 접근 가능  -->
+        {% for temp_dic in url_rank %}
+            <tr>
+                <td>{{temp_dic.url}}</td>
+                <td>{{temp_dic.num}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+</body>
+</html>
